@@ -30,7 +30,7 @@ func main() {
 
 		switch opcion {
 		case 1:
-			cmd := exec.Command("chmod", "+x", "/home/julio-or/Documentos/USAC/9no Semestre/Lab Sopes 2/Proyecto 2/LAB-SOPES2-Memoria-puertos/src/Scripts/permisos.sh")
+			cmd := exec.Command("sudo", "chmod", "777", "/media")
 			output, err := cmd.Output()
 
 			if err != nil {
@@ -54,7 +54,7 @@ func main() {
 			}
 
 		case 2:
-			cmd := exec.Command("chmod", "+x", "/home/julio-or/Documentos/USAC/9no Semestre/Lab Sopes 2/Proyecto 2/LAB-SOPES2-Memoria-puertos/src/Scripts/noPermisos.sh")
+			cmd := exec.Command("sudo", "chmod", "000", "/media")
 			output, err := cmd.Output()
 
 			if err != nil {
