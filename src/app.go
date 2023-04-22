@@ -20,7 +20,6 @@ func main() {
 		return
 	}
 
-
 	for opcion != 3 {
 		fmt.Println("Escriba la opcion que desea elegir: ")
 		fmt.Println("1. Dar permisos")
@@ -31,7 +30,7 @@ func main() {
 
 		switch opcion {
 		case 1:
-			cmd := exec.Command("chmod", "+x" ,"/home/julio-or/Documentos/USAC/9no Semestre/Lab Sopes 2/Proyecto 2/LAB-SOPES2-Memoria-puertos/src/Scripts/permisos.sh")
+			cmd := exec.Command("chmod", "+x", "/home/julio-or/Documentos/USAC/9no Semestre/Lab Sopes 2/Proyecto 2/LAB-SOPES2-Memoria-puertos/src/Scripts/permisos.sh")
 			output, err := cmd.Output()
 
 			if err != nil {
@@ -43,8 +42,9 @@ func main() {
 
 			// Observando la USB
 			fmt.Println("Observando la USB...")
+			fmt.Println("Combinacion de teclas 'ctrl + c' para detener la observación de la USB...")
 			for {
-				cmd2 := exec.Command("inotifywait", "-e", "create,delete,move", "/media/usb/")
+				cmd2 := exec.Command("inotifywait", "-e", "create,delete,move", "/media/julio-or/UBUNTU 20_0")
 				output, err := cmd2.Output()
 				if err != nil {
 					fmt.Println("Error al ejecutar inotifywait:", err)
@@ -53,9 +53,8 @@ func main() {
 				fmt.Println("Se detectó una acción en la USB: ", string(output))
 			}
 
-
 		case 2:
-			cmd := exec.Command("chmod", "+x" ,"/home/julio-or/Documentos/USAC/9no Semestre/Lab Sopes 2/Proyecto 2/LAB-SOPES2-Memoria-puertos/src/Scripts/noPermisos.sh")
+			cmd := exec.Command("chmod", "+x", "/home/julio-or/Documentos/USAC/9no Semestre/Lab Sopes 2/Proyecto 2/LAB-SOPES2-Memoria-puertos/src/Scripts/noPermisos.sh")
 			output, err := cmd.Output()
 
 			if err != nil {
