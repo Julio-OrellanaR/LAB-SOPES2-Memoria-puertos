@@ -1,0 +1,13 @@
+{
+  "$schema": "https://wails.io/schemas/config.v2.json",
+  "name": "PY1_Sopes2",
+  "outputfilename": "PY1_Sopes2",
+  "frontend:install": "npm install",
+  "frontend:build": "npm run build",
+  "frontend:dev:watcher": "npm run dev",
+  "frontend:dev:serverUrl": "auto",
+  "author": {
+    "name": "Julio Josè Orellana",
+    "email": "julioseorellanar@gmail.com"
+  }
+}
