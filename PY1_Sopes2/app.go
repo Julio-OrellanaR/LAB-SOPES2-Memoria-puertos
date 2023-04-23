@@ -37,7 +37,7 @@ func (a *App) CPU() float64 {
 }
 
 func (a *App) DISK() float64 {
-	usage, err := getDiskUsage("/")
+	usage, err := getMemoryUsage()
 	if err != nil {
 		fmt.Println("Error:", err)
 		return 0
@@ -59,16 +59,17 @@ func getCpuUsage() (float64, error) {
 	return usage, nil
 }
 
-func getDiskUsage(path string) (float64, error) {
-	var stat syscall.Statfs_t
-	err := syscall.Statfs(path, &stat)
+func getMemoryUsage() (float64, error) {
+	var info syscall.Sysinfo_t
+	err := syscall.Sysinfo(&info)
 	if err != nil {
 		return 0, err
 	}
 
-	total := stat.Blocks * uint64(stat.Bsize)
-	free := stat.Bfree * uint64(stat.Bsize)
-	usage := 100 - float64(free)/float64(total)*100
+	total := info.Totalram * uint64(info.Unit)
+	free := info.Freeram * uint64(info.Unit)
+	used := total - free
+	usage := float64(used) / float64(total) * 100
 
 	return usage, nil
 }
